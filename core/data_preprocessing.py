@@ -187,7 +187,7 @@ def convert_to_valid_json(function_description):
             output_functions.append(json_formatted_function_description)
 
         except Exception as e:
-            print(f"⚠️ Skipping function {func.get('name', 'unknown')} due to: {e}")
+            print(f"Skipping function {func.get('name', 'unknown')} due to: {e}")
             continue
 
     return output_functions
