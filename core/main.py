@@ -8,7 +8,7 @@ from google import genai
 from openai import OpenAI
 from tqdm import tqdm
 
-from core.api_calls import claude_call
+from core.api_calls import claude_call, gemini_call, openai_call
 from core.data_preprocessing import load_data
 from core.evaluation import eval
 
@@ -51,12 +51,9 @@ def main():
 
     opena_ai_client, gemini_client, claude_client = start_clients()
 
-    # dic_results = {}
+    dic_results = {}
 
-    with open("results/dic_results.json", "r") as f:
-        dic_results = json.load(f)
-
-    """for i, row in tqdm(df_data.iterrows()):
+    for _, row in tqdm(df_data.iterrows()):
         function_call = gemini_call(gemini_client, row.query, row.tools)
         all_calls_gemini.append(function_call)
         if function_call is not None and hasattr(function_call, "name"):
@@ -75,7 +72,7 @@ def main():
     with open("results/dic_results.json", "w") as f:
         json.dump(dic_results, f, indent=4)
 
-    for i, row in tqdm(df_data_openai.iterrows()):
+    for _, row in tqdm(df_data_openai.iterrows()):
         function_call = openai_call(opena_ai_client, row.query, row.tools_open_ai)
         all_calls_open_ai.append(function_call)
         if function_call is not None and hasattr(function_call, "name"):
@@ -93,9 +90,9 @@ def main():
     }
 
     with open("results/dic_results.json", "w") as f:
-        json.dump(dic_results, f, indent=4)"""
+        json.dump(dic_results, f, indent=4)
 
-    for i, row in tqdm(df_data_openai.iterrows()):
+    for _, row in tqdm(df_data_openai.iterrows()):
         function_call = claude_call(
             claude_client, row.query, list({f["name"]: f for f in row.tools_claude}.values())
         )
