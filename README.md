@@ -1,5 +1,6 @@
 # 🔍 Benchmark Function Calling
 
+This repo contains a pipeline to benchmark Claude 3 haiku, Gemini 1.5 Flash and GPT4o on function calling. The dataset used is the one introduced by Salesforces (available at https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k)
 ## Setup
 
 1. Create a virtual environment:
